@@ -6,14 +6,18 @@ int main(){
     while (1) {
         // Ask the user for NFL score
         printf("Enter 0 or 1 to STOP\nEnter the NFL score: ");
-        scanf("%d", &score);
+        // If invalid input stop the program and display error
+        if (scanf("%d", &score) != 1) {
+            printf("\nError: Invalid input.\n");
+            break;
+        }
 
         // Stop the program if the score is less than 2
         if (score <= 1) {
             break;
         } 
 
-        printf("Possible combinations of scoring plays if a team's score is %d:\n", score);
+        printf("\nPossible combinations of scoring plays if a team's score is %d:\n\n", score);
 
         // Loop through every possible combination of TD + 2pt conversion
         for (int td_2 = 0; td_2 <= score / 8; td_2++) {
